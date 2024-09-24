@@ -25,7 +25,10 @@ def absolute(n: int) -> int:
     Returns:
         the absolute value of the passed in number
     """
-    raise NotImplementedError("absolute")
+    if n < 0:
+        return -1 * n 
+    else:
+        return n 
 
 
 def factorial(n: int) -> int:
@@ -38,8 +41,12 @@ def factorial(n: int) -> int:
     Returns:
         factorial of the passed in number
     """
-    raise NotImplementedError("factorial")
-
+    # 5! = 5 * 4 * 3 * 2 * 1
+    result = 1
+   # print(range(1, 5))
+    for x in range(1, n + 1):
+        result *= x
+    return result
 
 T = TypeVar("T")
 
@@ -55,7 +62,9 @@ def every_other(lst: List[T]) -> List[T]:
     Returns:
         a list of every of other item in the original list starting with the first
     """
-    raise NotImplementedError("every_other")
+    return lst[::2]
+    
+
 
 
 def sum_list(lst: List[int]) -> int:
@@ -68,8 +77,10 @@ def sum_list(lst: List[int]) -> int:
     Returns:
         the sum of the passed in list
     """
-    raise NotImplementedError("sum_list")
-
+    total = 0
+    for number in lst:
+        total += number
+    return total
 
 def mean(lst: List[int]) -> float:
     """Takes a list of numbers, and returns the mean of the numbers.
@@ -80,7 +91,12 @@ def mean(lst: List[int]) -> float:
     Returns:
         the mean of the passed in list
     """
-    raise NotImplementedError("mean")
+    total = 0
+    for i in range(len(lst)):
+        total += lst[i]
+    total /= len(lst)
+    return total
+
 
 
 def median(lst: List[int]) -> float:
@@ -95,7 +111,17 @@ def median(lst: List[int]) -> float:
     Returns:
         the median of the passed in list
     """
+    sortedList = sorted(lst)
+    n = len(sortedList)
+    if n % 2 == 1:  
+        return sortedList[n // 2]
+    else:  
+        mid1 = sortedList[n // 2 - 1]
+        mid2 = sortedList[n // 2]
+        return (mid1 + mid2) / 2
+
     raise NotImplementedError("median")
+
 
 
 def duck_duck_goose(lst: List[str]) -> List[str]:
@@ -117,23 +143,36 @@ def duck_duck_goose(lst: List[str]) -> List[str]:
     Returns:
         the resulting list after playing duck duck goose
     """
-    raise NotImplementedError("duck_duck_goose")
+    index = 0  # Start at the beginning of the list
+    
+    # Continue until only two names are left
+    while len(lst) > 2:
+        # Find the index of the person to be removed
+        index = (index + 2) % len(lst)  # Move to the third person
+        
+        # Remove that person from the list
+        lst.pop(index)
+    
+    return lst
 
 
 # this line causes the nested code to be skipped if the file is imported instead of run
 if __name__ == "__main__":
     assert absolute(-1) == 1, "absolute of -1 failed"
+    print(factorial(-1))
     assert factorial(4) == 24, "factorial of 4 failed"
-    assert every_other([1, 2, 3, 4, 5]) == [
-        1,
-        3,
-        5,
-    ], "every_other of [1,2,3,4,5] failed"
+    print(factorial(4))
+    assert factorial(5) == 120, "factorial of 5 failed"
+    print(factorial(5))
+    assert factorial(0) == 1, "factorial of 0 failed"
+    print(factorial(5))
+    assert every_other([1, 2, 3, 4, 5]) == [1, 3, 5], "every_other of [1,2,3,4,5] failed"
+    print(every_other([1, 2, 3, 4, 5]))
     assert sum_list([1, 2, 3]) == 6, "sum_list of [1,2,3] failed"
     assert mean([1, 2, 3, 4, 5]) == 3, "mean of [1,2,3,4,5] failed"
     assert median([1, 2, 3, 4, 5]) == 3, "median of [1,2,3,4,5] failed"
 
     names = ["roscoe", "kim", "woz", "solin", "law", "remess"]
     assert duck_duck_goose(names) == ["roscoe", "law"]
-
+    print(duck_duck_goose(names))
     print("All tests passed!")

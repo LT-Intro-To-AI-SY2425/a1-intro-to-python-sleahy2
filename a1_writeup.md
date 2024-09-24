@@ -14,10 +14,12 @@ Mr. Berg will look at all your files to determine what you have completed.  If t
 
 1. What is your initial thoughts about the python programming language?
 
-
+I like Python, but it was different as I wasn't used to the spacing and syntax to effect the coe as much as it does in Python. Overall, it is fairly similar to other languages I have used, and seems like it is fairly simple to write code fast in Python.
 
 2. Describe some similarities and differences that you found between python and other programming languages you have used in the past?
 
-
+One similarity between Python and Java is that looping is fairly similar, as well as using math expression. It is also similar to javascript when naming variables. Although it is different from these languages as the spacing and syntax in Python is very important, but it did not matter as much in other languages, such as javascript.
 
 3. What are some things that you learned through this assignment?
+
+I learned how to manipulate lists using for loops. I also learned that spacing is important, but there is not a lot of important characterstics of the code, like in java you need a semicolon after each line of code. I learned how to define a variable and how to use the terminal in order to see my errors in my code. 
